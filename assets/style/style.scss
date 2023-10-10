@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./variables";
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  // background: #f7f6f9;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-section {
+  min-width: max-content;
+  margin-bottom: 20px;
+}
+
+.menu-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.menu-nav {
+  display: block;
+  margin-bottom: 10px;
+  color: $primary;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
