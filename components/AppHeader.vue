@@ -14,8 +14,10 @@ const localePath = useLocalePath();
             value=""
             name="search"
             :placeholder="$t('shared.search')" />
-          <span>{{ $t("personal_account") }}</span>
-          <span>{{ $t("social") }}</span>
+          <NuxtLink to="https://lk.sf.kg" target="_blank">{{ $t("personal_account") }}</NuxtLink>
+          <div>
+            <NuxtLink><VIcon icon="twitter" color="white" /></NuxtLink>
+          </div>
           <span>{{ $t("appeal") }}</span>
         </div>
       </div>

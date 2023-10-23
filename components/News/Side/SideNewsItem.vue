@@ -9,7 +9,6 @@ const props = defineProps({
 
 <template>
   <div class="side-news-item mb-4">
-    <img src="~/assets/images/side-news.jpeg" alt="" />
     <span>{{ text }}</span>
   </div>
 </template>
@@ -18,13 +17,15 @@ const props = defineProps({
 .side-news-item {
   position: relative;
   color: #fff;
+  background: #0083bb;
+  padding: 20px;
 
   span {
     font-size: 24px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
   }
 
   a {

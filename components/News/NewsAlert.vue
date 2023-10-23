@@ -1,6 +1,5 @@
 <template>
   <div class="news-alert mb-4">
-    <img src="~/assets/images/side-news.jpeg" alt="" />
     <span>{{ $t("informs.title") }}</span>
     <a href="#">{{ $t("informs.more") }}</a>
   </div>
@@ -10,6 +9,8 @@
 .news-alert {
   position: relative;
   color: #fff;
+  background: #0083bb;
+  height: 350px;
 
   img {
     width: 100%;
