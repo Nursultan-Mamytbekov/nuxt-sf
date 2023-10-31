@@ -1,9 +1,11 @@
 <template>
   <NuxtLayout>
-    <div>
-      <AppHeader />
-      <NuxtPage />
-      <AppFooter />
-    </div>
+    <VApp>
+      <div>
+        <AppHeader />
+        <NuxtPage />
+        <AppFooter />
+      </div>
+    </VApp>
   </NuxtLayout>
 </template>

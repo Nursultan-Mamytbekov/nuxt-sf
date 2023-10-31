@@ -6,7 +6,10 @@ const localePath = useLocalePath();
   <header class="header">
     <section class="header-top py-5">
       <div class="container flex justify-between">
-        <LanguageSwitcher />
+        <div class="flex justify-between">
+          <VIcon icon="mdi-eye" class="mr-3" />
+          <LanguageSwitcher />
+        </div>
         <div class="flex gap-10">
           <input
             type="text"
@@ -16,7 +19,10 @@ const localePath = useLocalePath();
             :placeholder="$t('shared.search')" />
           <NuxtLink to="https://lk.sf.kg" target="_blank">{{ $t("personal_account") }}</NuxtLink>
           <div>
-            <NuxtLink><VIcon icon="twitter" color="white" /></NuxtLink>
+            <NuxtLink to="https://twitter.com/SocFondKG" target="_blank" class="mr-5">
+              <VIcon icon="mdi-twitter" />
+            </NuxtLink>
+            <NuxtLink to="https://www.facebook.com/socfondKG" target="_blank"><VIcon icon="mdi-facebook" /></NuxtLink>
           </div>
           <span>{{ $t("appeal") }}</span>
         </div>

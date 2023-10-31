@@ -1,13 +1,24 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  css: ["@mdi/font/css/materialdesignicons.min.css", "~/assets/style/style.scss"],
+  css: ["~/assets/style/style.scss"],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+  build: {
+    transpile: ["vuetify"],
+  },
+  modules: [
+    "@nuxtjs/i18n",
+    (_options, nuxt) => {
+      nuxt.hooks.hook("vite:extendConfig", (config) => {
+        config.plugins.push(vuetify({ autoImport: true }));
+      });
+    },
+  ],
   vite: {
     css: {
       preprocessorOptions: {
@@ -16,6 +27,12 @@ export default defineNuxtConfig({
         },
       },
     },
+    vue: {
+      template: {
+        transformAssetUrls,
+      },
+    },
+    optimizeDeps: { exclude: ["fsevents"] },
   },
   components: [
     {
@@ -23,7 +40,6 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
-  modules: ["@nuxtjs/i18n"],
   routeRules: {
     "/": { redirect: "/kg" },
   },
@@ -33,11 +49,5 @@ export default defineNuxtConfig({
     defaultLocale: "kg",
     detectBrowserLanguage: false,
     vueI18n: "./i18n",
-  },
-  vuetify: {
-    treeShake: true,
-  },
-  build: {
-    transpile: ["vuetify"],
   },
 });
