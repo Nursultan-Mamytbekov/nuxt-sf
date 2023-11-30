@@ -6,7 +6,7 @@
         <News />
       </div>
       <div class="basis-1/4">
-        <SideNews />
+        <SideBlog />
       </div>
     </div>
   </NuxtLayout>

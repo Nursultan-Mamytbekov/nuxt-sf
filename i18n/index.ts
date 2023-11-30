@@ -1,10 +1,10 @@
 import ru from "./ru";
-import kg from "./kg";
+import ky from "./ky";
 
 export default defineI18nConfig(() => ({
   legacy: false,
   messages: {
     ru,
-    kg,
+    ky,
   },
 }));

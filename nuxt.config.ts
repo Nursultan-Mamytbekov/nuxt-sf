@@ -13,12 +13,27 @@ export default defineNuxtConfig({
   },
   modules: [
     "@nuxtjs/i18n",
+    "@nuxtjs/strapi",
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
-        config.plugins.push(vuetify({ autoImport: true }));
+        config.plugins?.push(vuetify({ autoImport: true }));
       });
     },
   ],
+  strapi: {
+    url: process.env.STRAPI_URL || "http://localhost:1337",
+    prefix: "/api",
+    version: "v4",
+    cookie: {},
+    cookieName: "strapi_jwt",
+  },
+  runtimeConfig: {
+    public: {
+      strapi: {
+        url: process.env.STRAPI_URL || "http://localhost:1337",
+      },
+    },
+  },
   vite: {
     css: {
       preprocessorOptions: {
@@ -41,12 +56,12 @@ export default defineNuxtConfig({
     },
   ],
   routeRules: {
-    "/": { redirect: "/kg" },
+    "/": { redirect: "/ky" },
   },
   i18n: {
-    locales: ["ru", "kg"],
+    locales: ["ru", "ky"],
     strategy: "prefix",
-    defaultLocale: "kg",
+    defaultLocale: "ky",
     detectBrowserLanguage: false,
     vueI18n: "./i18n",
   },
