@@ -2,6 +2,7 @@
 import type { Strapi4ResponseData } from "@nuxtjs/strapi/dist/runtime/types/v4";
 import type { SideBlog } from "~/types";
 
+const localePath = useLocalePath();
 const config = useRuntimeConfig();
 
 const props = defineProps<{ sideBlog: Strapi4ResponseData<SideBlog> }>();
@@ -10,7 +11,7 @@ const imageUrl = computed(() => config.public.strapi.url + props.sideBlog.attrib
 </script>
 
 <template>
-  <NuxtLink to="/" class="side-news-item mb-4">
+  <NuxtLink :to="localePath(`/sideblog/${sideBlog.id}`)" class="side-news-item mb-4">
     <img :src="imageUrl" alt="" />
     <span>{{ sideBlog.attributes.content?.title }}</span>
   </NuxtLink>
