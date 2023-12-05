@@ -8,22 +8,28 @@ export function useStrapiApi() {
 
   const getArticles = () => {
     const params = withLocale({ populate: "content.title" });
-    return useAsyncData("articles", () => find<Article>("articles", params));
+    return useAsyncData("articles", () => find<Article>("articles", params), { server: false });
   };
 
   const getArticleById = (id: number | string) => {
     const params = { populate: ["content", "createdAt"] };
-    return useAsyncData("article", () => findOne<Article>("articles", id, params));
+    return useAsyncData(`article:${id}`, () => findOne<Article>("articles", id, params));
   };
 
   const getSideBlogs = () => {
     const params = withLocale({ populate: ["content.title", "background.data.attributes.url"] });
-    return useAsyncData("sideblogs", () => find<SideBlog>("sideblogs", params));
+    return useAsyncData("sideblogs", () => find<SideBlog>("sideblogs", params), { server: false });
+  };
+
+  const getSideBlogById = (id: number | string) => {
+    const params = { populate: "content" };
+    return useAsyncData(`sideblogs:${id}`, () => findOne<SideBlog>("sideblogs", id, params));
   };
 
   return {
     getArticles,
     getArticleById,
     getSideBlogs,
+    getSideBlogById,
   };
 }

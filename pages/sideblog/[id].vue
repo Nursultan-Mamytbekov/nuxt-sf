@@ -1,13 +1,7 @@
 <script setup lang="ts">
-import type { SideBlog } from "~/types";
-
 const route = useRoute();
-const { findOne } = useStrapi<SideBlog>();
-
 const sideBlogId = route.params.id as string;
-const { data: sideblog, pending } = await useAsyncData(`sideblogs:${sideBlogId}`, () =>
-  findOne("sideblogs", sideBlogId, { populate: "content" })
-);
+const { data: sideblog, pending } = await useStrapiApi().getSideBlogById(sideBlogId);
 </script>
 
 <template>
