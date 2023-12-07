@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import type { StrapiResponse, Navigation } from "~/types";
+
+const props = defineProps<{ navigation: StrapiResponse<Navigation> }>();
+
+const localePath = useLocalePath();
 const disabled = ref(false);
 const hide = () => (disabled.value = true);
 </script>
@@ -6,11 +11,25 @@ const hide = () => (disabled.value = true);
 <template>
   <div class="hover-menu" @mouseover="disabled = false">
     <span class="hover-menu-item">
-      <slot name="name" />
+      {{ navigation.attributes.name }}
     </span>
 
     <div class="hover-menu-content" :class="{ disabled }">
-      <slot name="content" :hide="hide" />
+      <div class="container grid grid-cols-2 grid-flow-row-dense gap-x-20 gap-y-2">
+        <div v-for="section in navigation.attributes.body" :key="section.id" class="menu-section">
+          <h4 class="menu-title w-full">{{ section.title }}</h4>
+          <div class="menu-navs">
+            <NuxtLink
+              v-for="nav in section.items"
+              :key="nav.id"
+              :to="{ path: localePath(`/article/${nav.article.data.id}`) }"
+              class="menu-nav"
+              @click="hide">
+              {{ nav.title }}
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

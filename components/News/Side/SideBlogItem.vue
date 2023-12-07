@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import type { Strapi4ResponseData } from "@nuxtjs/strapi/dist/runtime/types/v4";
-import type { SideBlog } from "~/types";
+import type { StrapiResponse, SideBlog } from "~/types";
 
 const localePath = useLocalePath();
 const config = useRuntimeConfig();
 
-const props = defineProps<{ sideBlog: Strapi4ResponseData<SideBlog> }>();
+const props = defineProps<{ sideBlog: StrapiResponse<SideBlog> }>();
 
 const imageUrl = computed(() => config.public.strapi.url + props.sideBlog.attributes.background.data?.attributes?.url);
 </script>

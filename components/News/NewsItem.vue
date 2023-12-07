@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import type { Strapi4ResponseData } from "@nuxtjs/strapi/dist/runtime/types/v4";
-import type { Article } from "~/types";
+import type { Post, StrapiResponse } from "~/types";
 
 const localePath = useLocalePath();
-defineProps<{ article: Strapi4ResponseData<Article> }>();
+defineProps<{ post: StrapiResponse<Post> }>();
 </script>
 
 <template>
-  <NuxtLink v-if="article" :to="localePath(`/article/${article.id}`)" class="flex flex-col mb-4">
-    <span class="text-gray-400 text">{{ article.attributes?.createdAt }}</span>
+  <NuxtLink v-if="post" :to="localePath(`/post/${post.id}`)" class="flex flex-col mb-4">
+    <span class="text-gray-400 text">{{ post.attributes?.createdAt }}</span>
     <span class="hover:underline">
-      {{ article.attributes.content?.title }}
+      {{ post.attributes.content?.title }}
     </span>
   </NuxtLink>
 </template>

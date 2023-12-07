@@ -1,7 +1,30 @@
+<script setup lang="ts">
+import type { Report } from "~/types";
+const { find } = useStrapi();
+const { locale } = useI18n();
+const config = useRuntimeConfig();
+const localePath = useLocalePath();
+
+const params = {
+  populate: ["content.title", "background.data.attributes.url"],
+  locale: locale.value as any,
+};
+
+const { data: report, pending } = await useAsyncData("report", () => find<Report>("report", params), {
+  server: false,
+});
+
+const imageUrl = computed(
+  () => config.public.strapi.url + report.value?.data?.attributes.background.data?.attributes?.url
+);
+</script>
+
 <template>
-  <div class="news-alert mb-4">
-    <span>{{ $t("informs.title") }}</span>
-    <a href="#">{{ $t("informs.more") }}</a>
+  <VSkeletonLoader v-if="pending" class="mb-4" height="350px" />
+  <div v-else class="news-alert mb-4">
+    <span>{{ report?.data.attributes.content?.title }}</span>
+    <img v-if="report?.data?.attributes.background" :src="imageUrl" alt="" />
+    <NuxtLink :to="localePath('/report')">{{ $t("informs.more") }}</NuxtLink>
   </div>
 </template>
 
@@ -13,8 +36,8 @@
   height: 350px;
 
   img {
-    width: 100%;
-    height: 345px;
+    width: inherit;
+    height: inherit;
   }
 
   span {

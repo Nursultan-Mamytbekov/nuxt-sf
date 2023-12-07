@@ -1,4 +1,4 @@
-import type { Article, SideBlog } from "~/types";
+import type { Article, SideBlog, Post } from "~/types";
 
 export function useStrapiApi() {
   const { find, findOne } = useStrapi();
@@ -6,9 +6,14 @@ export function useStrapiApi() {
 
   const withLocale = (params: Object) => ({ locale: locale.value as any, ...params });
 
-  const getArticles = () => {
+  const getPosts = () => {
     const params = withLocale({ populate: "content.title" });
-    return useAsyncData("articles", () => find<Article>("articles", params), { server: false });
+    return useAsyncData("posts", () => find<Post>("posts", params), { server: false });
+  };
+
+  const getPostById = (id: number | string) => {
+    const params = { populate: ["content", "createdAt"] };
+    return useAsyncData(`post:${id}`, () => findOne<Post>("posts", id, params));
   };
 
   const getArticleById = (id: number | string) => {
@@ -27,7 +32,8 @@ export function useStrapiApi() {
   };
 
   return {
-    getArticles,
+    getPosts,
+    getPostById,
     getArticleById,
     getSideBlogs,
     getSideBlogById,

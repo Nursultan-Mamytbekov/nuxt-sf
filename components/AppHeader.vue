@@ -44,29 +44,7 @@ const localePath = useLocalePath();
     </section>
 
     <section class="header-down container mb-5">
-      <ul class="flex justify-between items-center actions">
-        <li>
-          <MenuAbout />
-        </li>
-        <li>
-          <MenuCitizens />
-        </li>
-        <li>
-          <MenuPensioners />
-        </li>
-        <li>
-          <MenuPayers />
-        </li>
-        <li>
-          <MenuPayment />
-        </li>
-        <li>
-          <MenuBudget />
-        </li>
-        <li>
-          <a href="#">{{ $t("nav.contacts") }}</a>
-        </li>
-      </ul>
+      <HoverMenu />
     </section>
   </header>
 </template>
