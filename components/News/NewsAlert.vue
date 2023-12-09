@@ -2,7 +2,6 @@
 import type { Report } from "~/types";
 const { find } = useStrapi();
 const { locale } = useI18n();
-const config = useRuntimeConfig();
 const localePath = useLocalePath();
 
 const params = {
@@ -10,20 +9,18 @@ const params = {
   locale: locale.value as any,
 };
 
-const { data: report, pending } = await useAsyncData("report", () => find<Report>("report", params), {
+const { data, pending } = await useAsyncData("report", () => find<Report>("report", params), {
   server: false,
 });
 
-const imageUrl = computed(
-  () => config.public.strapi.url + report.value?.data?.attributes.background.data?.attributes?.url
-);
+const report = computed<Report>(() => data.value?.data.attributes);
 </script>
 
 <template>
   <VSkeletonLoader v-if="pending" class="mb-4" height="350px" />
   <div v-else class="news-alert mb-4">
-    <span>{{ report?.data.attributes.content?.title }}</span>
-    <img v-if="report?.data?.attributes.background" :src="imageUrl" alt="" />
+    <span>{{ report.content?.title }}</span>
+    <img v-if="report.background" :src="useStrapiImage(report.background.data?.attributes?.url)" alt="" />
     <NuxtLink :to="localePath('/report')">{{ $t("informs.more") }}</NuxtLink>
   </div>
 </template>

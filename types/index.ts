@@ -19,6 +19,11 @@ export type Report = BaseStrapiEntity &
     background: any;
   };
 
+export type Slider = BaseStrapiEntity &
+  Content & {
+    background: any;
+  };
+
 export type Chapter = BaseStrapiEntity & {
   name: string;
   navigation: Navigation;

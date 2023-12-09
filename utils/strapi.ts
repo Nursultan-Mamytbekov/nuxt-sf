@@ -1,3 +1,4 @@
+import { log } from "console";
 import type { Article, SideBlog, Post } from "~/types";
 
 export function useStrapiApi() {
@@ -38,4 +39,10 @@ export function useStrapiApi() {
     getSideBlogs,
     getSideBlogById,
   };
+}
+
+export function useStrapiImage(imageUrl: string) {
+  const config = useRuntimeConfig();
+
+  return config.public.strapi.url + imageUrl;
 }
