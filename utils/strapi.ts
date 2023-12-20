@@ -1,4 +1,3 @@
-import { log } from "console";
 import type { Article, SideBlog, Post } from "~/types";
 
 export function useStrapiApi() {

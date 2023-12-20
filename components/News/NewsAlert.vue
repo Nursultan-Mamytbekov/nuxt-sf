@@ -9,7 +9,7 @@ const params = {
   locale: locale.value as any,
 };
 
-const { data, pending } = await useAsyncData("report", () => find<Report>("report", params), {
+const { data, pending } = await useAsyncData(`report:${locale.value}`, () => find<Report>("report", params), {
   server: false,
 });
 

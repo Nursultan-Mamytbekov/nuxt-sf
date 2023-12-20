@@ -43,6 +43,12 @@ export type Article = BaseStrapiEntity & {
   chapter: Chapter;
 };
 
+export type Partner = BaseStrapiEntity & {
+  title: string;
+  logo: any;
+  url: string;
+};
+
 export type SectionItem = {
   id: number;
   title: string;

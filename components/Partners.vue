@@ -1,49 +1,29 @@
+<script setup lang="ts">
+import type { Partner } from "~/types";
+const { find } = useStrapi();
+const { locale } = useI18n();
+
+const params = { populate: ["logo"], locale: locale.value as any };
+const { data: partners, pending } = await useAsyncData("partners", () => find<Partner>("partners", params), {
+  server: false,
+});
+</script>
+
 <template>
   <div class="partners">
     <div class="container">
       <h4 class="text-center text-xl mb-10">{{ $t("cooperation") }}</h4>
 
-      <div class="flex flex-wrap justify-between items-center gap-4 mb-10">
-        <div class="partner">
-          <img src="~/assets/images/partner-img.jpeg" alt="" />
+      <div class="grid grid-cols-4 items-center justify-items-center gap-4 mb-10">
+        <div v-for="partner in partners?.data" :key="partner.id" class="partner">
+          <NuxtLink :to="partner.attributes.url" target="_blank">
+            <VTooltip :text="partner.attributes.title" location="bottom">
+              <template v-slot:activator="{ props }">
+                <img :src="useStrapiImage(partner.attributes.logo.data?.attributes?.url)" v-bind="props" />
+              </template>
+            </VTooltip>
+          </NuxtLink>
         </div>
-        <div class="partner">
-          <img src="~/assets/images/partner-img-1.jpeg" alt="" />
-        </div>
-        <div class="partner">
-          <img src="~/assets/images/partner-img-2.png" alt="" />
-        </div>
-        <div class="partner">
-          <img src="~/assets/images/partner-img-3.jpeg" alt="" />
-        </div>
-        <div class="partner">
-          <img src="~/assets/images/partner-img.jpeg" alt="" />
-        </div>
-        <div class="partner">
-          <img src="~/assets/images/partner-img-1.jpeg" alt="" />
-        </div>
-        <div class="partner">
-          <img src="~/assets/images/partner-img-2.png" alt="" />
-        </div>
-        <div class="partner">
-          <img src="~/assets/images/partner-img-3.jpeg" alt="" />
-        </div>
-      </div>
-      <div class="partners-down">
-        <a href="#">
-          Единый портал общественного обсуждения проектов нормативных правовых актов Кыргызской Республик
-        </a>
-        <a href="#"> Государственный портал электронных услуг Кыргызской Республики </a>
-        <a href="#"> Жогорку Кенеш Кыргызской Республики </a>
-        <a href="#"> Правительство Кыргызской Республики </a>
-        <a href="#"> Президент Кыргызской Республики </a>
-        <a href="#"> Официальный Портал Государственных Закупок Кыргызской Республики </a>
-        <a href="#"> Антикоррупционная политика Правительства Кыргызской Республики </a>
-        <a href="#"> ЦЕНТРАЛИЗОВАННЫЙ БАНК ДАННЫХ ПРАВОВОЙ ИНФОРМАЦИИ КЫРГЫЗСКОЙ РЕСПУБЛИКИ </a>
-        <a href="#"> Кыргыз Республикасынын Президентине караштуу Мамлекеттик тил боюнча улуттук комиссия </a>
-        <a href="#"> Кыргызстан страна небесных гор </a>
-        <a href="#"> Единая национальная отчетност </a>
-        <a href="#"> ЦЕНТРАЛИЗОВАННЫЙ БАНК ДАННЫХ ПРАВОВОЙ ИНФОРМАЦИИ КЫРГЫЗСКОЙ РЕСПУБЛИКИ </a>
       </div>
     </div>
   </div>
@@ -68,7 +48,6 @@
 }
 
 .partner {
-  flex-basis: 23%;
   margin-bottom: 15px;
 }
 </style>
