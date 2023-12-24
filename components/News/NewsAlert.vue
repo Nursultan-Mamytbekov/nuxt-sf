@@ -17,8 +17,8 @@ const report = computed<Report>(() => data.value?.data.attributes);
 </script>
 
 <template>
-  <VSkeletonLoader v-if="pending" class="mb-4" height="350px" />
-  <div v-else class="news-alert mb-4">
+  <VSkeletonLoader v-if="pending" class="tw-mb-4" height="350px" />
+  <div v-else class="news-alert tw-mb-4">
     <span>{{ report.content?.title }}</span>
     <img v-if="report.background" :src="useStrapiImage(report.background.data?.attributes?.url)" alt="" />
     <NuxtLink :to="localePath('/report')">{{ $t("informs.more") }}</NuxtLink>

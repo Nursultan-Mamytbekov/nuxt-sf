@@ -15,9 +15,9 @@ const hide = () => (disabled.value = true);
     </span>
 
     <div class="hover-menu-content" :class="{ disabled }">
-      <div class="container grid grid-cols-2 grid-flow-row-dense gap-x-20 gap-y-2">
+      <div class="tw-container tw-grid tw-grid-cols-2 tw-grid-flow-row-dense tw-gap-x-20 tw-gap-y-2">
         <div v-for="section in navigation.attributes.body" :key="section.id" class="menu-section">
-          <h4 class="menu-title w-full">{{ section.title }}</h4>
+          <h4 class="menu-title tw-w-full">{{ section.title }}</h4>
           <div class="menu-navs">
             <NuxtLink
               v-for="nav in section.items"

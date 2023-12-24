@@ -4,16 +4,16 @@ const localePath = useLocalePath();
 
 <template>
   <header class="header">
-    <section class="header-top py-5">
-      <div class="container flex justify-between">
-        <div class="flex justify-between">
+    <section class="tw-hidden md:tw-block header-top tw-py-5">
+      <div class="tw-container tw-flex tw-justify-between">
+        <div class="tw-flex tw-justify-between">
           <VIcon icon="mdi-eye" class="mr-3" />
           <LanguageSwitcher />
         </div>
-        <div class="flex gap-10">
+        <div class="tw-flex tw-gap-10">
           <input
             type="text"
-            class="rounded-sm placeholder:pl-2"
+            class="tw-rounded-sm tw-placeholder:pl-2"
             value=""
             name="search"
             :placeholder="$t('shared.search')" />
@@ -29,21 +29,66 @@ const localePath = useLocalePath();
       </div>
     </section>
 
-    <section class="header-main container flex justify-between items-center py-5">
-      <div class="flex items-center gap-5">
+    <section class="header-main tw-container tw-flex tw-justify-between tw-items-center tw-py-5 tw-px-4">
+      <div class="tw-flex tw-items-center tw-gap-5">
         <NuxtLink :to="localePath('/')" class="logo">
           <img src="~/assets/logo.png" alt="logo" width="70" height="70" />
         </NuxtLink>
-        <h1 class="title">{{ $t("logo") }}</h1>
+        <h1 class="tw-text-sm md:tw-text-base title">{{ $t("logo") }}</h1>
       </div>
 
-      <div>
-        <span class="block text-right"> {{ $t("helplines") }} </span>
+      <div class="tw-hidden md:tw-block">
+        <span class="tw-block tw-text-right"> {{ $t("helplines") }} </span>
         <span class="phones"> 1202; 0(312)54-33-16; 0(312)57-66-61; 0(555)64-04-16 </span>
+      </div>
+
+      <div class="md:tw-hidden">
+        <VDialog fullscreen transition="dialog-top-transition">
+          <template #activator="{ props }">
+            <VBtn color="primary" v-bind="props" icon="mdi-menu" variant="plain" />
+          </template>
+          <template #default="{ isActive }">
+            <VCard>
+              <VToolbar class="tw-px-4 tw-flex">
+                <div class="tw-flex tw-justify-between">
+                  <VIcon icon="mdi-eye" class="mr-3" />
+                  <LanguageSwitcher />
+                </div>
+                <VSpacer />
+                <VBtn variant="plain" icon="mdi-close" @click="isActive.value = false" />
+              </VToolbar>
+              <div class="tw-px-4">
+                <div class="tw-flex tw-justify-between tw-py-4">
+                  <NuxtLink to="https://lk.sf.kg" target="_blank">{{ $t("personal_account") }}</NuxtLink>
+                  <span>{{ $t("appeal") }}</span>
+                </div>
+
+                <div class="tw-flex tw-justify-between tw-gap-10">
+                  <div>
+                    <NuxtLink to="https://twitter.com/SocFondKG" target="_blank" class="mr-5">
+                      <VIcon icon="mdi-twitter" />
+                    </NuxtLink>
+                    <NuxtLink to="https://www.facebook.com/socfondKG" target="_blank">
+                      <VIcon icon="mdi-facebook" />
+                    </NuxtLink>
+                  </div>
+                  <input
+                    type="text"
+                    class="tw-rounded-sm tw-placeholder:pl-2"
+                    value=""
+                    name="search"
+                    :placeholder="$t('shared.search')" />
+                </div>
+
+                <HoverMenu />
+              </div>
+            </VCard>
+          </template>
+        </VDialog>
       </div>
     </section>
 
-    <section class="header-down container mb-5">
+    <section class="header-down tw-hidden md:tw-block tw-container tw-mb-5">
       <HoverMenu />
     </section>
   </header>
@@ -62,8 +107,6 @@ const localePath = useLocalePath();
 }
 
 .title {
-  font-size: 16px;
-  font-weight: 500;
   max-width: 500px;
 }
 

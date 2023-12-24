@@ -1,5 +1,5 @@
 <template>
-  <div class="container mb-10">
+  <div class="tw-container tw-px-4 tw-mb-10">
     <slot />
   </div>
 </template>

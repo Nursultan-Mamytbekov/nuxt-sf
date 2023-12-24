@@ -10,7 +10,7 @@ const imageUrl = computed(() => config.public.strapi.url + props.sideBlog.attrib
 </script>
 
 <template>
-  <NuxtLink :to="localePath(`/sideblog/${sideBlog.id}`)" class="side-news-item mb-4">
+  <NuxtLink :to="localePath(`/sideblog/${sideBlog.id}`)" class="side-news-item tw-mb-4">
     <img :src="imageUrl" alt="" />
     <span>{{ sideBlog.attributes.content?.title }}</span>
   </NuxtLink>

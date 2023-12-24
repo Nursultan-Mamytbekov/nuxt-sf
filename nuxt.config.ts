@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/i18n",
     "@nuxtjs/strapi",
+    "@vueuse/nuxt",
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
         config.plugins?.push(vuetify({ autoImport: true }));

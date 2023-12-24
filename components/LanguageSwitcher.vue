@@ -11,7 +11,7 @@ const setLocale = (_locale: string | LocaleObject) => {
 </script>
 
 <template>
-  <div class="flex gap-2">
+  <div class="tw-flex tw-gap-2">
     <span v-for="(locale, index) in locales" :key="index" class="locale" @click="setLocale(locale)">{{
       $t(locale as string)
     }}</span>

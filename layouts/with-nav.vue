@@ -1,10 +1,10 @@
 <template>
   <NuxtLayout name="container">
-    <div class="flex gap-3">
-      <div class="basis-1/4">
+    <div class="tw-flex tw-gap-3">
+      <div class="tw-basis-1/4">
         <slot name="navbar" />
       </div>
-      <div class="basis-3/4">
+      <div class="tw-basis-3/4">
         <slot name="default" />
       </div>
     </div>

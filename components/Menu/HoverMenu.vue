@@ -33,7 +33,7 @@ const { data: navigations, pending } = await useAsyncData(
 <template>
   <VSkeletonLoader v-if="pending" class="skeleton" height="40px" />
   <template v-else>
-    <ul v-if="navigations?.data" class="flex justify-between items-center actions">
+    <ul v-if="navigations?.data" class="md:tw-flex md:tw-justify-between md:tw-items-center actions">
       <li v-for="navigation in navigations.data" :key="navigation.id">
         <HoverMenuItem :navigation="navigation" />
       </li>
