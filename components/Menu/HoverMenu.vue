@@ -4,6 +4,8 @@ import type { Navigation } from "~/types";
 const { find } = useStrapi();
 const { locale } = useI18n();
 
+defineEmits(["menuSelected"]);
+
 const params = {
   populate: {
     body: {
@@ -35,7 +37,7 @@ const { data: navigations, pending } = await useAsyncData(
   <template v-else>
     <ul v-if="navigations?.data" class="md:tw-flex md:tw-justify-between md:tw-items-center actions">
       <li v-for="navigation in navigations.data" :key="navigation.id">
-        <HoverMenuItem :navigation="navigation" />
+        <HoverMenuItem :navigation="navigation" @selected="$emit('menuSelected')" />
       </li>
     </ul>
   </template>

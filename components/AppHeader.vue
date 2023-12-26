@@ -63,7 +63,7 @@ const localePath = useLocalePath();
                   <span>{{ $t("appeal") }}</span>
                 </div>
 
-                <div class="tw-flex tw-justify-between tw-gap-10">
+                <div class="tw-flex tw-justify-center tw-gap-10 tw-mb-5">
                   <div>
                     <NuxtLink to="https://twitter.com/SocFondKG" target="_blank" class="mr-5">
                       <VIcon icon="mdi-twitter" />
@@ -72,15 +72,9 @@ const localePath = useLocalePath();
                       <VIcon icon="mdi-facebook" />
                     </NuxtLink>
                   </div>
-                  <input
-                    type="text"
-                    class="tw-rounded-sm tw-placeholder:pl-2"
-                    value=""
-                    name="search"
-                    :placeholder="$t('shared.search')" />
                 </div>
 
-                <HoverMenu />
+                <HoverMenu @menu-selected="isActive.value = false" />
               </div>
             </VCard>
           </template>
