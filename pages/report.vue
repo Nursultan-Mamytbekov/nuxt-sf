@@ -21,10 +21,3 @@ const { data: report, pending } = await useAsyncData("report", () => find<Report
     </template>
   </NuxtLayout>
 </template>
-
-<style scoped lang="scss">
-.content {
-  font-size: 16px !important;
-  word-wrap: break-word;
-}
-</style>

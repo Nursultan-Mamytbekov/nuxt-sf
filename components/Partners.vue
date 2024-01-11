@@ -33,6 +33,10 @@ const { data: partners, pending } = await useAsyncData("partners", () => find<Pa
 </template>
 
 <style scoped lang="scss">
+.dark-mode .partners {
+  background: #091a28;
+  color: #fff;
+}
 .partners {
   background: #f8f8f8;
   padding: 40px 0;

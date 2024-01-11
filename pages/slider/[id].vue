@@ -19,10 +19,3 @@ const { data, pending } = await useAsyncData(`slider:${sliderId}`, () => findOne
     </template>
   </NuxtLayout>
 </template>
-
-<style lang="scss">
-.content {
-  font-size: 16px !important;
-  word-wrap: break-word;
-}
-</style>

@@ -13,10 +13,3 @@ const { data, pending } = await useStrapiApi().getArticleById(route.params.id as
     </template>
   </NuxtLayout>
 </template>
-
-<style lang="scss">
-.content {
-  font-size: 16px !important;
-  word-wrap: break-word;
-}
-</style>

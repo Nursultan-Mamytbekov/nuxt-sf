@@ -16,10 +16,3 @@ const { data: sideblog, pending } = await useStrapiApi().getSideBlogById(sideBlo
     </template>
   </NuxtLayout>
 </template>
-
-<style lang="scss">
-.content {
-  font-size: 16px !important;
-  word-wrap: break-word;
-}
-</style>

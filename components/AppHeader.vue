@@ -5,9 +5,9 @@ const localePath = useLocalePath();
 <template>
   <header class="header">
     <section class="tw-hidden md:tw-block header-top tw-py-5">
-      <div class="tw-container tw-flex tw-justify-between">
-        <div class="tw-flex tw-justify-between">
-          <VIcon icon="mdi-eye" class="mr-3" />
+      <div class="tw-container tw-flex tw-justify-between tw-items-center">
+        <div class="tw-flex tw-justify-between tw-items-center tw-gap-2">
+          <VisualHelper />
           <LanguageSwitcher />
         </div>
         <div class="tw-flex tw-gap-10">
@@ -50,8 +50,8 @@ const localePath = useLocalePath();
           <template #default="{ isActive }">
             <VCard>
               <VToolbar class="tw-px-4 tw-flex">
-                <div class="tw-flex tw-justify-between">
-                  <VIcon icon="mdi-eye" class="mr-3" />
+                <div class="tw-flex tw-justify-between tw-items-center">
+                  <VisualHelper />
                   <LanguageSwitcher />
                 </div>
                 <VSpacer />
