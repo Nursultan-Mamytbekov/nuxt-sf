@@ -24,7 +24,7 @@ const localePath = useLocalePath();
             </NuxtLink>
             <NuxtLink to="https://www.facebook.com/socfondKG" target="_blank"><VIcon icon="mdi-facebook" /></NuxtLink>
           </div>
-          <span>{{ $t("appeal") }}</span>
+          <NuxtLink to="https://digital.gov.kg/" target="_blank">{{ $t("appeal") }}</NuxtLink>
         </div>
       </div>
     </section>
