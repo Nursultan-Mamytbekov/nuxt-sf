@@ -32,6 +32,8 @@ export type Chapter = BaseStrapiEntity & {
 
 export type Post = BaseStrapiEntity & Content;
 
+export type FAQ = BaseStrapiEntity & Content;
+
 export type SideBlog = BaseStrapiEntity &
   Content & {
     background: any;

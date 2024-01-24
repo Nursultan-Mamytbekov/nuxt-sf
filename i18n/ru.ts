@@ -10,6 +10,8 @@ export default {
   social: "Соц. сети",
   appeal: "Обращение граждан",
   helplines: "Телефоны доверия",
+  site_map: "КАРТА САЙТА",
+  faq: "ВОПРОС-ОТВЕТ",
   nav: {
     about: "О фонде",
     citizens: "Гражданам",

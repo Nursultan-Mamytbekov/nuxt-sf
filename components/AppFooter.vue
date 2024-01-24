@@ -1,6 +1,16 @@
+<script setup lang="ts">
+const localePath = useLocalePath();
+</script>
+
 <template>
   <footer class="footer">
     <div class="tw-container tw-px-4">
+      <span>
+        <NuxtLink :to="localePath('/site-map')" class="tw-inline-block tw-w-full">{{ $t("site_map") }}</NuxtLink>
+      </span>
+      <span>
+        <NuxtLink :to="localePath('/faq')" class="tw-inline-block tw-w-full">{{ $t("faq") }}</NuxtLink>
+      </span>
       <span class="tw-inline-block tw-w-full">РАБОЧИЙ ГРАФИК: Понедельник - Пятница, с 9:00 до 18:00</span>
       <span class="tw-inline-block tw-w-full">ПЕРЕРЫВ: с 12:30 до 13:30</span>
       <span class="tw-inline-block tw-w-full">ТЕЛЕФОН/ФАКС: 0 (312) 54 45 50; 0 (312) 54-45-29; 0 (312) 54 52 25</span>
