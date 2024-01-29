@@ -28,6 +28,7 @@ const { data: navigations, pending } = await useAsyncData(
   () => find<Navigation>("navigations", params.value),
   {
     watch: [locale],
+    immediate: true,
   }
 );
 </script>
