@@ -6,10 +6,11 @@ const { find } = useStrapi();
 const { width } = useWindowSize();
 const localePath = useLocalePath();
 
-const params = { populate: ["content", "background"], locale: locale.value as any };
+const params = computed(() => ({ populate: ["content", "background"], locale: locale.value as any }));
 
-const { data: sliders, pending } = await useAsyncData("sliders", () => find<Slider>("sliders", params), {
+const { data: sliders, pending } = await useAsyncData("sliders", () => find<Slider>("sliders", params.value), {
   server: false,
+  watch: [locale],
 });
 </script>
 

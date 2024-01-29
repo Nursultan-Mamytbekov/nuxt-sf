@@ -3,9 +3,10 @@ import type { Partner } from "~/types";
 const { find } = useStrapi();
 const { locale } = useI18n();
 
-const params = { populate: ["logo"], locale: locale.value as any };
-const { data: partners, pending } = await useAsyncData("partners", () => find<Partner>("partners", params), {
+const params = computed(() => ({ populate: ["logo"], locale: locale.value as any }));
+const { data: partners } = await useAsyncData("partners", () => find<Partner>("partners", params.value), {
   server: false,
+  watch: [locale],
 });
 </script>
 

@@ -6,7 +6,7 @@ const { locale } = useI18n();
 
 defineEmits(["menuSelected"]);
 
-const params = {
+const params = computed(() => ({
   populate: {
     body: {
       populate: {
@@ -21,13 +21,13 @@ const params = {
     },
   },
   locale: locale.value as any,
-};
+}));
 
 const { data: navigations, pending } = await useAsyncData(
-  "navigations",
-  () => find<Navigation>("navigations", params),
+  `navigations:${locale.value}`,
+  () => find<Navigation>("navigations", params.value),
   {
-    server: false,
+    watch: [locale],
   }
 );
 </script>
