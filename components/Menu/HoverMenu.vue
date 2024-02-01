@@ -27,6 +27,7 @@ const { data: navigations, pending } = await useAsyncData(
   `navigations:${locale.value}`,
   () => find<Navigation>("navigations", params.value),
   {
+    server: false,
     watch: [locale],
     immediate: true,
   }

@@ -19,7 +19,7 @@ const { data: sliders, pending } = await useAsyncData("sliders", () => find<Slid
 
   <template v-else>
     <div>
-      <VCarousel v-if="sliders?.data" hide-delimiters show-arrows :height="width < 600 ? '25vh' : undefined">
+      <VCarousel v-if="sliders?.data" hide-delimiters show-arrows :height="width < 600 ? '25vh' : '400px'">
         <VCarouselItem
           v-for="slider in sliders.data"
           :key="slider.id"

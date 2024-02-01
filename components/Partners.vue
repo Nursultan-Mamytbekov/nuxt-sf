@@ -15,13 +15,13 @@ const { data: partners } = await useAsyncData("partners", () => find<Partner>("p
     <div class="tw-container tw-px-4">
       <h4 class="tw-text-center tw-text-xl tw-mb-10">{{ $t("cooperation") }}</h4>
 
-      <div class="md:tw-grid md:tw-grid-cols-4 md:tw-justify-items-center md:tw-gap-4 tw-mb-10">
+      <div class="md:tw-grid md:tw-grid-cols-4 tw-justify-items-stretch md:tw-gap-4 tw-mb-10">
         <div v-for="partner in partners?.data" :key="partner.id" class="partner">
           <NuxtLink :to="partner.attributes.url" target="_blank">
             <VTooltip :text="partner.attributes.title" location="bottom">
               <template v-slot:activator="{ props }">
                 <img
-                  class="tw-h-full"
+                  class="partner-img"
                   :src="useStrapiImage(partner.attributes.logo.data?.attributes?.url)"
                   v-bind="props" />
               </template>
@@ -57,5 +57,10 @@ const { data: partners } = await useAsyncData("partners", () => find<Partner>("p
 
 .partner {
   margin-bottom: 15px;
+
+  &-img {
+    height: 120px;
+    width: 100%;
+  }
 }
 </style>

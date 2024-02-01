@@ -30,7 +30,7 @@ const report = computed<Report>(() => data.value?.data.attributes);
   position: relative;
   color: #fff;
   background: #0083bb;
-  height: 350px;
+  height: 400px;
 
   img {
     width: inherit;
